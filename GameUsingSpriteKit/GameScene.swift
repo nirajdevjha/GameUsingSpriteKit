@@ -10,6 +10,7 @@ import SpriteKit
 
 class GameScene: SKScene, SKPhysicsContactDelegate {
     var scoreLabel: SKLabelNode!
+    var ballArray = ["ballRed","ballPurple","ballGrey","ballGreen","ballYellow","ballCyan","ballBlue"]
     
     var score = 0 {
         didSet {
@@ -81,7 +82,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 addChild(box)
             } else {
                 // create balls and add physics to it.
-                let ball = SKSpriteNode(imageNamed: "ballRed")
+                ballArray.shuffle()
+                let ball = SKSpriteNode(imageNamed: ballArray[0])
                 ball.physicsBody = SKPhysicsBody(circleOfRadius: ball.size.width / 2.0)
                 
                 // defines bounciness.
